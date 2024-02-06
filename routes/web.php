@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesControllers;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::post('/addTags', [TagesControllers::class, 'add']);
 Route::post('/updateTags/{id}', [TagesControllers::class, 'update']);
 Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
 
+Route::get('/Orders', [SaleController::class, 'index']);

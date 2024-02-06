@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesControllers;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +20,13 @@ use App\Http\Controllers\TagesControllers;
 */
 
 Route::get('/', [Controller::class, 'index']);
+Route::get('/login', [Controller::class, 'login']);
+Route::get('/Register', [Controller::class, 'Register']);
+Route::get('/ForgetPassword', [Controller::class, 'ForgetPassword']);
+
+
 Route::get('/Home', [Controller::class, 'index']);
+Route::get('/Users', [UserController::class, 'index']);
 
 Route::get('/Products', [ProductController::class, 'index']);
 Route::get('/Categories', [CategoriesControllers::class, 'index']);

@@ -12,4 +12,14 @@ class Controller extends BaseController
     public function index(){
         return view("index");
     }
+    public function login(){
+        return view("Auth.login");
+    }
+    public function Register(){
+        return view("Auth.register");
+    }
+    public function ForgetPassword(){
+        return view("Auth.reset");
+    }
+    
 }

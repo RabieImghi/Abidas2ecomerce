@@ -61,6 +61,12 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
+                                    <a href="/Tags" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
+                                        <span class="nk-menu-text">Tages</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
                                     <a href="customers.html" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Customers</span>

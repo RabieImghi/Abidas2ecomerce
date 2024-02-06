@@ -111,15 +111,106 @@
                             <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <ul class="link-list-opt no-bdr">
-                                    <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-eye"></em><span>View Product</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Product Orders</span></a></li>
-                                    <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
+                                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#UpdateProduct{{$product->id}}"><em class="icon ni ni-edit"></em><span>Edit Product</span></a></li>
+                                    <li><a href="DeletProduct/{{$product->id}}"><em class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div class="modal fade" id="UpdateProduct{{$product->id}}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Category Info</h5>
+                            <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <em class="icon ni ni-cross"></em>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/UpdateProduct/{{$product->id}}" method="post" >
+                                @csrf
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="product-title">Product Title</label>
+                                            <div class="form-control-wrap">
+                                                <input type="text" name="name" value="{{$product->name}}" class="form-control" id="product-title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-mb-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="sale-price">Sale Price</label>
+                                            <div class="form-control-wrap">
+                                                <input type="number" name='price' value="{{$product->price}}" class="form-control" id="sale-price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-mb-6">
+                                        <div class="form-group">
+                                            <label class="form-label" for="stock">Stock</label>
+                                            <div class="form-control-wrap">
+                                                <input type="number" name="stock"  class="form-control" id="stock" value="{{$product->stock}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-mb-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Description</label>
+                                            <div class="form-control-wrap">
+                                                <textarea  name="description" class="form-control">{{$product->description}}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="category">Category</label>
+                                            <div class="form-control-wrap">
+                                                <select name="category_id" class='form-select  mt-3'>
+                                                    @foreach($categories as $categorie)
+                                                    <option value="{{ $categorie->id }}" @if($categorie->id == $product->category->id) selected @endif> 
+                                                    {{ $categorie->name }}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tags">Tags</label>
+                                            <div class="form-control-wrap">
+                                                <select name="tages_id[]" class='form-select  mt-3' multiple size="2">
+                                                @foreach($tages as $tage)
+                                                    <option value="{{ $tage->id }}" 
+                                                        @if(isset($TagList[$product->id]))
+                                                            @foreach($TagList[$product->id] as $selectedTag)
+                                                                @if($tage->id == $selectedTag->id) selected @endif
+                                                            @endforeach
+                                                        @endif > {{ $tage->name }}
+                                                    </option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="upload-zone small bg-lighter my-2 dropzone dz-clickable">
+                                            <div class="dz-message">
+                                                <input type="file" name="" id="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Save Informations</span></button>
+                                    </div>
+                                </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         @endforeach
@@ -214,7 +305,7 @@
                 <div class="col-12">
                     <div class="upload-zone small bg-lighter my-2 dropzone dz-clickable">
                         <div class="dz-message">
-                            <span class="dz-message-text">Drag and drop file</span>
+                            <input type="file" name="" id="" class="form-control">
                         </div>
                     </div>
                 </div>

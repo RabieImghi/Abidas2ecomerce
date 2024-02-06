@@ -17,6 +17,8 @@ use App\Http\Controllers\TagesControllers;
 */
 
 Route::get('/', [Controller::class, 'index']);
+Route::get('/Home', [Controller::class, 'index']);
+
 Route::get('/Products', [ProductController::class, 'index']);
 Route::get('/Categories', [CategoriesControllers::class, 'index']);
 Route::post('/addProduct', [ProductController::class, 'add']);

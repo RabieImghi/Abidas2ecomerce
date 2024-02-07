@@ -129,7 +129,8 @@
         </div>
         @endforeach
     </div>
-
+    {{ $tages->links() }}
+   
     </div>
     <form action="/addTags" method='POST'>
         @csrf

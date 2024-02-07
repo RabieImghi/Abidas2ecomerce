@@ -23,6 +23,7 @@ Route::get('/', [Controller::class, 'index']);
 Route::get('/login', [Controller::class, 'login']);
 Route::get('/Register', [Controller::class, 'Register']);
 Route::get('/ForgetPassword', [Controller::class, 'ForgetPassword']);
+Route::get('/data', [Controller::class, 'data']);
 
 
 Route::get('/Home', [Controller::class, 'index']);

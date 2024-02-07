@@ -96,10 +96,10 @@
                 <span class="tb-sub">{{$product->category->name}}</span>
             </div>
             <div class="nk-tb-col tb-col-md">
-                <span class="tb-sub">
+                <span class="tb-sub ">
                 @if(!empty($TagList[$product->id]))
                     @foreach($TagList[$product->id] as $tageList)
-                        <span class="fw-normal mb-1 mx-1">{{$tageList->name}}</span>
+                        <span class="fw-normal mb-1 mx-1 d-flex flex-wrap">#{{$tageList->name}}</span>
                     @endforeach
                 @endif
                 </span>
@@ -182,7 +182,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="tags">Tags</label>
                                             <div class="form-control-wrap">
-                                                <select name="tages_id[]" class='form-select  mt-3' multiple size="2">
+                                                <select name="tages_id[]" class='form-select  mt-3' multiple>
                                                 @foreach($tages as $tage)
                                                     <option value="{{ $tage->id }}" 
                                                         @if(isset($TagList[$product->id]))
@@ -215,6 +215,7 @@
         </div>
         @endforeach
     </div>
+    {{ $products->links() }}
     </div>
     <form action="/addProduct" method='POST'>
         @csrf
@@ -277,7 +278,7 @@
                     <div class="form-group">
                         <label class="form-label" for="tags">Tags</label>
                         <div class="form-control-wrap">
-                            <select name="tages_id[]" class='form-select  mt-3' multiple size="2">
+                            <select name="tages_id[]" class='form-select  mt-3' multiple>
                                 @foreach($tages as $tage)
                                 <option value="{{ $tage->id}}">{{$tage->name}}</option>
                                 @endforeach

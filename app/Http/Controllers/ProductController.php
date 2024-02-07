@@ -11,7 +11,7 @@ use App\Models\ProductTag;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::with('category')->with('tage')->get();
+        $products = Product::with('category')->with('tage')->orderBy('created_at', 'desc')->paginate(4);
         $TagList = [];
         foreach($products as $product){
             foreach($product['tage'] as $tages){

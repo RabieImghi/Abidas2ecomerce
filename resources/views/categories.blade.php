@@ -129,7 +129,7 @@
         </div>
         @endforeach
     </div>
-  
+    {{ $categories->links() }}
     </div>
     <form action="/addCategory" method='POST'>
         @csrf

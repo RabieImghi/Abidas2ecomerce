@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->engine = 'InnoDB';
-            $table->timestamps();
+        Schema::create('users_permissions', function (Blueprint $table) {
+           $table->unsignedBigInteger('user_id');
+           $table->unsignedBigInteger('permission_id');
+
+           $table->primary(['user_id','permission_id']);
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the mig rations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('users_permissions');
     }
 };

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         User::insert([
             ['name'=>'Admin','email'=>'admin@gmail.com','password'=>'admin','credit_card'=>"23456789",'address'=>"Adrese User"],
-            ['name'=>'User','email'=>'user@gmail.com','password'=>'user''credit_card'=>"23456789",'address'=>"Adrese User"],
+            ['name'=>'User','email'=>'user@gmail.com','password'=>'user','credit_card'=>"23456789",'address'=>"Adrese User"],
         ]);
         
         Role::insert([

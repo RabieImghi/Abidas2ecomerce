@@ -41,37 +41,43 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
                                         <span class="nk-menu-text">Dashboard</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 <li class="nk-menu-item">
                                     <a href="/Orders" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
                                         <span class="nk-menu-text">Orders</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 <li class="nk-menu-item">
                                     <a href="/Products" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
                                         <span class="nk-menu-text">Products</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 <li class="nk-menu-item">
                                     <a href="/Categories" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
                                         <span class="nk-menu-text">Categories</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 <li class="nk-menu-item">
                                     <a href="/Tags" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
                                         <span class="nk-menu-text">Tages</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
                                 <li class="nk-menu-item">
                                     <a href="/Users" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
                                         <span class="nk-menu-text">Customers</span>
                                     </a>
-                                </li><!-- .nk-menu-item -->
+                                </li>
+                                <li class="nk-menu-item">
+                                    <a href="/Permissions" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                        <span class="nk-menu-text">Permission</span>
+                                    </a>
+                                </li>
                                 <!-- <li class="nk-menu-item">
                                     <a href="settings.html" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-opt-alt-fill"></em></span>

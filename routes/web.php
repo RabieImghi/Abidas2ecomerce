@@ -8,6 +8,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,9 @@ Route::post('/addTags', [TagesControllers::class, 'add']);
 Route::post('/updateTags/{id}', [TagesControllers::class, 'update']);
 Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
 Route::get('/Orders', [SaleController::class, 'index']);
+Route::get('/Permissions', [PermissionController::class, 'index']);
+Route::post('/DeletePermission', [PermissionController::class, 'destroy']);
+Route::post('/addPermission', [PermissionController::class, 'add']);
 
 // router User 
 Route::get('/Home/User', [Controller::class, 'indexUser']);

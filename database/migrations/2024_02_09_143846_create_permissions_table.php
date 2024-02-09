@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('route_id');
+            $table->primary(['role_id', 'route_id']);
             $table->engine = 'InnoDB';
             $table->timestamps();
         });

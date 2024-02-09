@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('permission_id');
-
-            $table->primary(['role_id','permission_id']);
+        Schema::create('routes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->engine = 'InnoDB';
+            $table->timestamps();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles_permissions');
+        Schema::dropIfExists('routes');
     }
 };

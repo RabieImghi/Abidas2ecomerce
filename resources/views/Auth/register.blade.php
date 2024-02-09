@@ -40,17 +40,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="html/pages/auths/auth-success-v2.html">
+                                <form action="User/Register" method="post">
+                                    @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="name">Name</label>
                                         <div class="form-control-wrap">
-                                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter your name">
+                                            <input type="text" name="name" class="form-control form-control-lg" id="name" placeholder="Enter your name">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="email">Email or Username</label>
+                                        <label class="form-label" for="email">Email </label>
                                         <div class="form-control-wrap">
-                                            <input type="text" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username">
+                                            <input type="email" name="email" class="form-control form-control-lg" id="email" placeholder="Enter your email address or username">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -60,7 +61,7 @@
                                                 <em class="passcode-icon icon-show icon ni ni-eye"></em>
                                                 <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
                                             </a>
-                                            <input type="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
+                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -70,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Register</button>
+                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
                                     </div>
                                 </form>
                                 <div class="form-note-s2 text-center pt-4"> Already have an account? <a href="/login"><strong>Sign in instead</strong></a>

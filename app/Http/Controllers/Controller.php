@@ -15,14 +15,5 @@ class Controller extends BaseController
         $categories= Categorie::all();
         return view("index",compact('categories'));
     }
-    public function login(){
-        return view("Auth.login");
-    }
-    public function Register(){
-        return view("Auth.register");
-    }
-    public function ForgetPassword(){
-        return view("Auth.reset");
-    }
     
 }

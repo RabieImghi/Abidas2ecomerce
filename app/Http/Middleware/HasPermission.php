@@ -15,7 +15,7 @@ class HasPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword'];
+        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register'];
         $uri = $request->route()->uri;
         $role_id = session('user_role') ?? '';
         // $role_id = 2;

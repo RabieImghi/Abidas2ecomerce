@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesControllers;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [Controller::class, 'index']);
-Route::get('/login', [Controller::class, 'login']);
-Route::get('/Register', [Controller::class, 'Register']);
-Route::get('/ForgetPassword', [Controller::class, 'ForgetPassword']);
+Route::get('/login', [AuthController::class, 'login']);
+Route::get('/Register', [AuthController::class, 'Register']);
+Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
+Route::post('/User/Register', [AuthController::class, 'User_Register']);
 
 
 Route::get('/Home', [Controller::class, 'index']);

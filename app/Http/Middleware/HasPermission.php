@@ -15,23 +15,19 @@ class HasPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register'];
+        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register','User/Login'];
         $uri = $request->route()->uri;
         $role_id = session('user_role') ?? '';
-        // $role_id = 2;
         if ($role_id) {
             $allowedRoutes = Permission::where('role_id', $role_id)->get();
-
             foreach ($allowedRoutes as $route) {
                 $allowedUri = $route->route->name;
-
                 if (count(explode('/', $uri)) > 2) {
                     if (strstr($uri, $allowedUri))  return $next($request);
                 } else {
                     if ($uri === $allowedUri) return $next($request);
                 }
             }
-
             return abort(401);
         } else {
             if (in_array($uri, $publicRoutes)) return $next($request);

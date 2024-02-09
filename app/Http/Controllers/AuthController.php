@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     public function login(){
@@ -28,9 +29,25 @@ class AuthController extends Controller
         $user->password = Hash::make($validateData['password']); 
         $user->credit_card = ""; 
         $user->address = ""; 
-        $user->role_id  = 1; 
+        $user->role_id  = 2; 
         $user->save();
-        return redirect('/login');
-        
+        return redirect('/login');   
+    }
+    public function User_Login(Request $request){
+        $validateData = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $user = User::where('email',$validateData['email'])->first();
+        if($user != null){
+            $hashedPasswordDB = $user->password;
+            if (Hash::check($validateData['password'], $hashedPasswordDB)) {
+                session(['user_role' =>$user->role_id]);
+                if($user->role_id==1) return redirect('/Home');
+                if($user->role_id==2) return redirect('/Home/User');
+            } else {
+                return redirect('/login'); 
+            }
+        }else return redirect('/login'); 
     }
 }

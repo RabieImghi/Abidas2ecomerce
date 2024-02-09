@@ -15,5 +15,8 @@ class Controller extends BaseController
         $categories= Categorie::all();
         return view("index",compact('categories'));
     }
+    public function indexUser(){
+        return view("index",compact('user.index'));
+    }
     
 }

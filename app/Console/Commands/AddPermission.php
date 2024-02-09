@@ -30,6 +30,7 @@ class AddPermission extends Command
     {
         $routes = Route::getRoutes();
         RouteModel::truncate();
+        Permission::truncate();
         foreach($routes as $route){
             $uri = $route->uri();
             if(strstr($uri, '_')) continue;
@@ -39,9 +40,18 @@ class AddPermission extends Command
             $routeModel->name = $uri;
             $routeModel->save();  
         }
+        
         if(Role::count()==0){
             Role::create(["name"=>"Admin"]);
             Role::create(["name"=>"Guest"]);
+        }
+        $modelRoutes = RouteModel::all();
+        $adminRole = Role::where('name', 'Admin')->first();
+        foreach ($modelRoutes as $route) {
+            Permission::create([
+                "route_id" => $route->id,
+                "role_id" => $adminRole->id
+            ]);
         }
     }
 }

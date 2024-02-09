@@ -25,24 +25,23 @@ Route::get('/login', [AuthController::class, 'login']);
 Route::get('/Register', [AuthController::class, 'Register']);
 Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
 Route::post('/User/Register', [AuthController::class, 'User_Register']);
-
-
+Route::post('/User/Login', [AuthController::class, 'User_Login']);
+// router Admin
 Route::get('/Home', [Controller::class, 'index']);
 Route::get('/Users', [UserController::class, 'index']);
-
 Route::get('/Products', [ProductController::class, 'index']);
 Route::get('/Categories', [CategoriesControllers::class, 'index']);
 Route::post('/addProduct', [ProductController::class, 'add']);
 Route::get('/DeletProduct/{id}', [ProductController::class, 'delet']);
 Route::post('/UpdateProduct/{id}', [ProductController::class, 'update']);
-
 Route::post('/addCategory', [CategoriesControllers::class, 'add']);
 Route::post('/updateCategory/{id}', [CategoriesControllers::class, 'update']);
 Route::get('/DeletCategory/{id}', [CategoriesControllers::class, 'delet']);
-
 Route::get('/Tags', [TagesControllers::class, 'index']);
 Route::post('/addTags', [TagesControllers::class, 'add']);
 Route::post('/updateTags/{id}', [TagesControllers::class, 'update']);
 Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
-
 Route::get('/Orders', [SaleController::class, 'index']);
+
+// router User 
+Route::get('/Home/User', [Controller::class, 'c']);

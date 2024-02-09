@@ -18,7 +18,7 @@ class HasPermission
     {
         $permission =  new AddPermission();
         $permission->handle();
-        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register','User/Login'];
+        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register','User/Login','logout'];
         $uri = $request->route()->uri;
         $role_id = session('user_role') ?? '';
         if ($role_id) {

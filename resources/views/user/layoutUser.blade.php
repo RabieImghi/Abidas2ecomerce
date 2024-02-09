@@ -34,9 +34,12 @@
                 </nav>
                 <div class="profile d-flex align-items-center gap-3">
                     <ul class="nav">
+                        @if(!session()->has('user_id'))
                         <li><a href="/login" class="nav-link ml-1 px-2 link-bleuFa active">Login</a></li>
                         <li><a href="/Register" class="nav-link ml-1 px-2 link-bleuFa">Sign Up</a></li>
+                        @endif
                     </ul>
+                    @if(session()->has('user_id'))
                     <div class="dropdown text-end ">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ asset('user/img/user.jpg') }}" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -46,9 +49,11 @@
                             <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a href="/logout" class="dropdown-item" href="#">Sign out</a></li>
+                            
                         </ul>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

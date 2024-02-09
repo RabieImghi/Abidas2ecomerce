@@ -25,8 +25,10 @@ Route::get('/', [Controller::class, 'indexUser']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/Register', [AuthController::class, 'Register']);
 Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
+Route::get('/logout', [AuthController::class, 'logout']);
 Route::post('/User/Register', [AuthController::class, 'User_Register']);
 Route::post('/User/Login', [AuthController::class, 'User_Login']);
+
 // router Admin
 Route::get('/Home', [Controller::class, 'index']);
 Route::get('/Users', [UserController::class, 'index']);

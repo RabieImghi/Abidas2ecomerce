@@ -42,6 +42,8 @@ class AuthController extends Controller
         if($user != null){
             $hashedPasswordDB = $user->password;
             if (Hash::check($validateData['password'], $hashedPasswordDB)) {
+                session(['username' =>$user->name]);
+                session(['user_id' =>$user->id]);
                 session(['user_role' =>$user->role_id]);
                 if($user->role_id==1) return redirect('/Home');
                 if($user->role_id==2) return redirect('/Home/User');
@@ -49,5 +51,9 @@ class AuthController extends Controller
                 return redirect('/login'); 
             }
         }else return redirect('/login'); 
+    }
+    public function logout(){
+        Session::flush();
+        return redirect('/'); 
     }
 }

@@ -96,7 +96,7 @@
                     <span class="tb-amount">{{$user->address}}</span>
                 </div>
                 <div class="nk-tb-col tb-col-md">
-                    <span class="tb-status text-success">Admin</span>
+                    <span class="tb-status text-success">{{$user->role->name}}</span>
                 </div>
                 <div class="nk-tb-col nk-tb-col-tools">
                     <ul class="nk-tb-actions gx-1">

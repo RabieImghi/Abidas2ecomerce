@@ -20,7 +20,7 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [Controller::class, 'index']);
+Route::get('/', [Controller::class, 'indexUser']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/Register', [AuthController::class, 'Register']);
 Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
@@ -44,4 +44,4 @@ Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
 Route::get('/Orders', [SaleController::class, 'index']);
 
 // router User 
-Route::get('/Home/User', [Controller::class, 'c']);
+Route::get('/Home/User', [Controller::class, 'indexUser']);

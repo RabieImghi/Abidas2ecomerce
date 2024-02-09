@@ -16,7 +16,7 @@ class Controller extends BaseController
         return view("index",compact('categories'));
     }
     public function indexUser(){
-        return view("index",compact('user.index'));
+        return view("user.index");
     }
     
 }

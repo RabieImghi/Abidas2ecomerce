@@ -43,6 +43,7 @@ class AuthController extends Controller
             $hashedPasswordDB = $user->password;
             if (Hash::check($validateData['password'], $hashedPasswordDB)) {
                 session(['username' =>$user->name]);
+                session(['email' =>$user->email]);
                 session(['user_id' =>$user->id]);
                 session(['user_role' =>$user->role_id]);
                 if($user->role_id==1) return redirect('/Home');

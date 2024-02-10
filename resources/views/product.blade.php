@@ -82,7 +82,7 @@
             </div>
             <div class="nk-tb-col tb-col-sm">
                 <span class="tb-product">
-                    <img src="./images/product/a.png" alt="" class="thumb">
+                    <img src="{{asset('storage/images/'.$product->imageuri)}}" alt="" class="thumb">
                     <span class="title">{{$product->name}}</span>
                 </span>
             </div>
@@ -129,7 +129,7 @@
                             </a>
                         </div>
                         <div class="modal-body">
-                            <form action="/UpdateProduct/{{$product->id}}" method="post" >
+                            <form action="/UpdateProduct/{{$product->id}}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-3">
                                     <div class="col-12">
@@ -178,6 +178,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="tags">Tags</label>
@@ -199,7 +200,7 @@
                                     <div class="col-12">
                                         <div class="upload-zone small bg-lighter my-2 dropzone dz-clickable">
                                             <div class="dz-message">
-                                                <input type="file" name="" id="" class="form-control">
+                                                <input type="file" name="image" id="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +218,7 @@
     </div>
     {{ $products->links() }}
     </div>
-    <form action="/addProduct" method='POST'>
+    <form action="/addProduct" method='POST' enctype="multipart/form-data">
         @csrf
     <div class="nk-add-product toggle-slide toggle-slide-right toggle-screen-any" data-content="addProduct" data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar="init"><div class="simplebar-wrapper" style="margin: -24px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 24px;">
         <div class="nk-block-head">
@@ -250,7 +251,7 @@
                     <div class="form-group">
                         <label class="form-label" for="stock">Stock</label>
                         <div class="form-control-wrap">
-                            <input type="number" name="stock" class="form-control" id="stock" value="0">
+                            <input type="number" name="stock" class="form-control" id="stock" >
                         </div>
                     </div>
                 </div>
@@ -258,7 +259,7 @@
                     <div class="form-group">
                         <label class="form-label">Description</label>
                         <div class="form-control-wrap">
-                            <textarea  name="description" class="form-control"></textarea>
+                            <textarea  name="description"  id="editor"   class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -289,7 +290,7 @@
                 <div class="col-12">
                     <div class="upload-zone small bg-lighter my-2 dropzone dz-clickable">
                         <div class="dz-message">
-                            <input type="file" name="" id="" class="form-control">
+                            <input type="file" name="image" id="" class="form-control">
                         </div>
                     </div>
                 </div>

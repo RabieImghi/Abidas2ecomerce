@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Categorie;
 use App\Models\Tage;
 use App\Models\ProductTag;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -29,15 +30,22 @@ class ProductController extends Controller
             'stock' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'tages_id' => '',
+            'tages_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
-        // $product = Product::create($validatedData);
+        $imageName="default.png";
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('images', $imageName, 'public');
+        }
         $product = new Product();
         $product->name = $validatedData['name'];
         $product->price = $validatedData['price'];
         $product->stock = $validatedData['stock'];
         $product->description = $validatedData['description'];
         $product->category_id = $validatedData['category_id'];
+        $product->imageuri = $imageName;
         $product->save();
         $lastInsertedId = $product->id;
         foreach($validatedData['tages_id'] as $dataTage){
@@ -50,7 +58,12 @@ class ProductController extends Controller
         return redirect('/Products');
     }
     public function delet($id){
-        Product::find($id)->delete();
+        $product = Product::find($id);
+        $oldImageName = $product->imageuri;
+        if($oldImageName != "default.png"){
+            Storage::disk('public')->delete("images/$oldImageName");   
+        }
+        $product->delete();
         return redirect('/Products');
     }
     public function update(Request $request, $id){
@@ -59,13 +72,28 @@ class ProductController extends Controller
             'price' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'tages_id' => '',
+            'tages_id' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
+
+        $product = Product::find($id);
+        $oldImageName = $product->imageuri;
+        $imageName = $oldImageName;
+        if ($request->hasFile('image')) {
+            if($oldImageName != "default.png"){
+                Storage::disk('public')->delete("images/$oldImageName");   
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('images', $imageName, 'public');
+        }
+
         Product::where('id',$id)->update([
             'name' => $validatedData['name'],
             'price' => $validatedData['price'],
             'description' => $validatedData['description'],
             'category_id' => $validatedData['category_id'],
+            'imageuri' => $imageName,
         ]);
         ProductTag::where('product_id',$id)->delete();
         foreach($validatedData['tages_id'] as $dataTage){

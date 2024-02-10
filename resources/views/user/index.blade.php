@@ -39,82 +39,35 @@
 </section>
 <h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Last 4 Product</h1><hr>
 <section class="services p-4 d-flex flex-wrap gap-4 justify-content-between align-items-center">
+    @foreach($products as $product)
     <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/product1.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
+        <div class="text-center p-2 " style="width: 100%">
+            <img src="{{ asset('storage/images/'.$product->imageuri) }}" style="height: 220px; width:220px" class="card-img-top" alt="...">
+
+        </div>
         <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>#1</span> Watch Serie 8</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="fw-bold card-title"><span>#1</span> {{$product->name}}</h5>
+            <p class="card-text" style="height: 76px; overflow: hidden">{{$product->description}}</p>
              <div class="prixinfo d-flex gap-5">
-                <button class="btn btn-danger">$ 120</button>
+                <button class="btn btn-danger">$ {{$product->price}}</button>
                 <button class="btn btn-primary">Order Now</button>  
             </div>
         </div>
     </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/product2.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>#2</span> Iphone 15</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-             <div class="prixinfo d-flex gap-5">
-                <button class="btn btn-danger">$ 120</button>
-                <button class="btn btn-primary">Order Now</button>  
-            </div>
-        </div>
-    </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/product3.jpg') }}" height="300px" height="200px" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>#3</span> Laptop</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-             <div class="prixinfo d-flex gap-5">
-                <button class="btn btn-danger">$ 120</button>
-                <button class="btn btn-primary">Order Now</button>  
-            </div>
-        </div>
-    </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/product4.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>#4</span> Samsung S24</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class="prixinfo d-flex gap-5">
-                <button class="btn btn-danger">$ 120</button>
-                <button class="btn btn-primary">Order Now</button>  
-            </div>
-        </div>
-    </div>
+    @endforeach
 </section>
 
 <h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Last 4 Category</h1><hr>
 <section class="services p-4 d-flex flex-wrap gap-4 justify-content-between align-items-center">
+    @foreach($categorys as $category)
     <div class="card shadow" style="width: 18rem;">
         <img src="{{ asset('user/img/category.png') }}" class="card-img-top" alt="...">
         <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>Cat : </span> Category 1</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="fw-bold card-title"><span>Cat : </span> {{$category->name}}</h5>
+            <p class="card-text">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. </p>
         </div>
     </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/category.png') }}" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>Cat : </span> Category 2</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/category.png') }}" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>Cat : </span> Category 3</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-    <div class="card shadow" style="width: 18rem;">
-        <img src="{{ asset('user/img/category.png') }}" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column align-items-center">
-            <h5 class="fw-bold card-title"><span>Cat : </span> Category 4</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
+    @endforeach
 </section>
 <section class="Contact shadow mt-5 p-2 mb-3 d-flex  gap-5 p-4">
     <div class="ratio ratio-16x9">

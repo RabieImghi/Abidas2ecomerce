@@ -21,7 +21,7 @@ use App\Http\Controllers\PermissionController;
 |
 */
 
-Route::get('/', [Controller::class, 'indexUser']);
+Route::get('/', [UserController::class, 'indexUser']);
 Route::get('/login', [AuthController::class, 'login']);
 Route::get('/Register', [AuthController::class, 'Register']);
 Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
@@ -50,4 +50,6 @@ Route::post('/DeletePermission', [PermissionController::class, 'destroy']);
 Route::post('/addPermission', [PermissionController::class, 'add']);
 
 // router User 
-Route::get('/Home/User', [Controller::class, 'indexUser']);
+Route::get('/Home/User', [UserController::class, 'indexUser']);
+Route::get('/AllProduct', [UserController::class, 'getAllProduct']);
+Route::get('/SearchProduct/{search}', [UserController::class, 'SearchProduct']);

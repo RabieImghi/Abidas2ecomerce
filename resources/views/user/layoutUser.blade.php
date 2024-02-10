@@ -25,8 +25,8 @@
                 </div>
                 <nav>
                     <ul class="nav">
-                        <li><a href="index.html" class="nav-link ml-1 px-2 link-bleuFa active">Home</a></li>
-                        <li><a href="allItems.html" class="nav-link ml-1 px-2 link-bleuFa">All Items</a></li>
+                        <li><a href="/" class="nav-link ml-1 px-2 link-bleuFa active">Home</a></li>
+                        <li><a href="/AllProduct" class="nav-link ml-1 px-2 link-bleuFa">All Items</a></li>
                         <li><a href="#" class="nav-link ml-1 px-2 link-bleuFa">Services</a></li>
                         <li><a href="#" class="nav-link ml-1 px-2 link-bleuFa">FAQs</a></li>
                         <li><a href="#" class="nav-link ml-1 px-2 link-bleuFa">About</a></li>

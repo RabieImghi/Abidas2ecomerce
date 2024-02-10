@@ -1,3 +1,9 @@
+@if(!isset($products[0]))
+<div class="d-flex justify-content-center w-100 h2 text-secondary fw-bold">
+    Product Not Match With Your Search !!!
+</div>
+
+@else
 @foreach($products as $product)
 <div class="card shadow" style="width: 18rem;">
     <div class="text-center p-2 " style="width: 100%">
@@ -14,3 +20,4 @@
     </div>
 </div>
 @endforeach
+@endif

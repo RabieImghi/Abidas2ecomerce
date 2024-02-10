@@ -1,7 +1,7 @@
 @extends('user.layoutUser')
 @section('content')
-<div class="container d-flex align-items-start pt-4">
-    <section class="flter" style="min-width: 250px; ">
+<div class="container row pt-4">
+    <section class="flter col-3" style="min-width: 250px;">
         <h4 class="fw-bold text-secondary">Filter : </h4>
         <h5 class="fw-bold text-secondary pt-4">Search : </h5>
         <input type="search" onkeyup="search()" name="search" id="search" class="form-control" style="width: 90%" placeholder="search">
@@ -28,8 +28,8 @@
         </section>
         <section class="mt-3 pt-4 pe-3">
             <h5 class="fw-bold text-secondary">Price : </h5>
-            <input type="range" class="form-range" min="0" max="5000" id="minrange">
-            <input type="range" class="form-range" min="5001" max="10000" id="maxrange">
+            <input type="range" class="form-range" onchange="filterPrice()" value="0" min="0" max="100" id="minrange">
+            <input type="range" class="form-range" onchange="filterPrice()" value="5000" min="100" max="5000" id="maxrange">
             <div class="d-flex align-items-center justify-content-between">
                 <input type="number" readonly id="minrang" class="p-2 border rounded-1 text-secondary fw-bold w-50" value="0">
                 <input type="number" readonly id="maxrang" class="p-2 border rounded-1 text-secondary fw-bold w-50" value="5001"> 
@@ -48,8 +48,14 @@
             });
         </script>
     </section>
-    <section >
-        <div id="allProducts" class="d-flex flex-wrap gap-4 justify-content-between align-items-center">
+    <section class="col-9">
+        <div id="allProducts"  style="min-width: 600px; " class="d-flex flex-wrap gap-4 justify-content-between align-items-center">
+            @if(!isset($products[0]))
+            <div class="d-flex justify-content-center w-100 h2 text-secondary fw-bold">
+                Product Not Match With Your Search !!!
+            </div>
+            
+            @else
             @foreach($products as $product)
             <div class="card shadow" style="width: 18rem;">
                 <div class="text-center p-2 " style="width: 100%">
@@ -66,6 +72,7 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
         <div class="pt-4 mt-2">
             {{$products->links()}}
@@ -74,11 +81,31 @@
     </section>  
     <style>
         .flter{
-            position: sticky;
-            top: 130px;
-        }    
+            position: sticky !important;
+            top: 130px !important;
+        }   
+        #allProducts::-webkit-scrollbar{
+            display: none !important
+        }
+        #allProducts{
+            height: 75vh !important;
+            overflow-y: scroll !important;
+        } 
     </style>  
     <script>
+        function filterPrice(){
+            var minValue = document.getElementById('minrange').value;
+            var maxValue = document.getElementById('maxrange').value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("allProducts").innerHTML = xhttp.responseText;
+                }
+            };
+            var url = '/SearchProductPrice/'+minValue+"-"+maxValue;          
+            xhttp.open("GET", url, true);
+            xhttp.send(); 
+        }
         function search(){
             var valueInput = document.getElementById('search').value;
             var xhttp = new XMLHttpRequest();

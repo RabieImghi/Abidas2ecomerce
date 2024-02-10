@@ -32,4 +32,9 @@ class UserController extends Controller
         else $products = Product::where('category_id',$search)->get();
         return view("user.search", compact('products'));
     }
+    public function SearchProductPrice($search){
+        $price = explode('-',$search);
+        $products = Product::where('price', '>', $price[0]) ->where('price', '<', $price[1]) ->get();
+        return view("user.search", compact('products'));
+    }
 }

@@ -2,15 +2,15 @@
 @section('content')
 <section class="hero d-flex align-items-center justify-content-around">
     <div class="textHero ">
-        <h1 class="mb-3"><span>Wiki</span>World</h1>
-        <p class=" mb-3">make a place where everyone can work together, <br> create, find and share wikis in an easy and interesting way.</p>
+        <h1 class="mb-3"><span>Adi</span>das</h1>
+        <p class=" mb-3">make a place where everyone can work together, <br> create, find and share product in an easy and interesting way.</p>
         <div class="inputNewUser">
             <input type="email" placeholder="Subscribe With Your Email ..." class="form-control" >
         </div>
         <button type="button" class="btn butt btn-primary mt-2">Subscribe Now </button>
     </div>
     <div class="image ">
-        <img src="{{ asset('user/img/WikiWorld.png') }}" style="width: 100%;"  alt="">
+        <img src="{{ asset('user/img/WikiWorld.png') }}" style="width: 600px;" class="rounded-full"  alt="">
     </div>
 </section>
 <h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Our services</h1><hr>
@@ -37,45 +37,54 @@
         </div>
     </div>
 </section>
-<h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Last 3 Wiks</h1><hr>
-<section class="LasWikis">
-    <div class="wikis row mb-3">
-        <div class="image col-6">
-            <img src="{{ asset('user/img/WikiWorld.png') }}" style="width: 50%;"  alt="">
-        </div>
-        <div class="textHero col-6 p-4">
-            <h1 class=""><span>Wiki</span>Title</h1>
-            <p class="fw-bold"> Category : <span class="blueColor">CategoryName</span></p>
-            <p class="fw-bold">Tages : <span class="blueColor">Tages1 Tags 2</span></p>
-            <p>make a place where everyone can work together, <br> create, find and share wikis in an easy and interesting way.</p>
-            <a href="#" class="btn butt btn-primary mt-2">More Details </a>
-        </div>
-    </div>
-    <div class="wikis row mb-3">
-        <div class="textHero col-6 p-4">
-            <h1 class=""><span>Wiki</span>Title</h1>
-            <p class="fw-bold"> Category : <span class="blueColor">CategoryName</span></p>
-            <p class="fw-bold">Tages : <span class="blueColor">Tages1 Tags 2</span></p>
-            <p>make a place where everyone can work together, <br> create, find and share wikis in an easy and interesting way.</p>
-            <a href="#" class="btn butt btn-primary mt-2">More Details </a>
-        </div>
-        <div class="image col-6">
-            <img src="{{ asset('user/img/WikiWorld.png') }}" style="width: 50%;"  alt="">
+<h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Last 4 Product</h1><hr>
+<section class="services p-4 d-flex flex-wrap gap-4 justify-content-between align-items-center">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ asset('user/img/product1.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="fw-bold card-title"><span>#1</span> Watch Serie 8</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             <div class="prixinfo d-flex gap-5">
+                <button class="btn btn-danger">$ 120</button>
+                <button class="btn btn-primary">Order Now</button>  
+            </div>
         </div>
     </div>
-    <div class="wikis row mb-3">
-        <div class="image col-6">
-            <img src="{{ asset('user/img/WikiWorld.png') }}" style="width: 50%;"  alt="">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ asset('user/img/product2.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="fw-bold card-title"><span>#2</span> Iphone 15</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             <div class="prixinfo d-flex gap-5">
+                <button class="btn btn-danger">$ 120</button>
+                <button class="btn btn-primary">Order Now</button>  
+            </div>
         </div>
-        <div class="textHero col-6 p-4">
-            <h1 class=""><span>Wiki</span>Title</h1>
-            <p class="fw-bold"> Category : <span class="blueColor">CategoryName</span></p>
-            <p class="fw-bold">Tages : <span class="blueColor">Tages1 Tags 2</span></p>
-            <p>make a place where everyone can work together, <br> create, find and share wikis in an easy and interesting way.</p>
-            <a href="#" class="btn butt btn-primary mt-2">More Details </a>
+    </div>
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ asset('user/img/product3.jpg') }}" height="300px" height="200px" class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="fw-bold card-title"><span>#3</span> Laptop</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             <div class="prixinfo d-flex gap-5">
+                <button class="btn btn-danger">$ 120</button>
+                <button class="btn btn-primary">Order Now</button>  
+            </div>
+        </div>
+    </div>
+    <div class="card shadow" style="width: 18rem;">
+        <img src="{{ asset('user/img/product4.png') }}" height="300px" height="200px" class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column align-items-center">
+            <h5 class="fw-bold card-title"><span>#4</span> Samsung S24</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="prixinfo d-flex gap-5">
+                <button class="btn btn-danger">$ 120</button>
+                <button class="btn btn-primary">Order Now</button>  
+            </div>
         </div>
     </div>
 </section>
+
 <h1 class="mb-3 mt-5 ml-2 fw-bold titleSection">Last 4 Category</h1><hr>
 <section class="services p-4 d-flex flex-wrap gap-4 justify-content-between align-items-center">
     <div class="card shadow" style="width: 18rem;">

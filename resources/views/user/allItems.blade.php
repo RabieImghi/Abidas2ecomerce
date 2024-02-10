@@ -7,10 +7,18 @@
         <input type="search" onkeyup="search()" name="search" id="search" class="form-control" style="width: 90%" placeholder="search">
         <h5 class="fw-bold text-secondary pt-4">Category : </h5>
         <section class="d-flex flex-column gap-4">
+            <label for="Check d-flex gap-1">
+                <div class="form-check">
+                    <input class="form-check-input" onclick="filter('all')" type="radio" name="category_id" id="exampleRadios1" >
+                    <label class="form-check-label" for="exampleRadios1">
+                        All Product
+                    </label>
+                </div>
+            </label>
             @foreach($categorys as $category)
             <label for="Check d-flex gap-1">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="category_id" id="exampleRadios1" value="{{$category->id}}">
+                    <input class="form-check-input" onclick="filter({{$category->id}})" type="radio" name="category_id" id="exampleRadios1" >
                     <label class="form-check-label" for="exampleRadios1">
                         {{$category->name}}
                     </label>
@@ -86,6 +94,19 @@
                 var url = '/SearchProduct/'+valueInput;
             }
            
+            xhttp.open("GET", url, true);
+            xhttp.send();  
+        }
+        function filter(idCategory){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("allProducts").innerHTML = xhttp.responseText;
+                }
+            };
+            if(idCategory == 'all') var url = '/FilterProduct/All';
+            else var url = '/FilterProduct/'+idCategory;
+            
             xhttp.open("GET", url, true);
             xhttp.send();  
         }

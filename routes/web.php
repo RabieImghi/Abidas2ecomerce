@@ -53,3 +53,4 @@ Route::post('/addPermission', [PermissionController::class, 'add']);
 Route::get('/Home/User', [UserController::class, 'indexUser']);
 Route::get('/AllProduct', [UserController::class, 'getAllProduct']);
 Route::get('/SearchProduct/{search}', [UserController::class, 'SearchProduct']);
+Route::get('/FilterProduct/{search}', [UserController::class, 'FilterProduct']);

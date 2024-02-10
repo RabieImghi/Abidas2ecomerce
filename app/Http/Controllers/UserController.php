@@ -24,7 +24,12 @@ class UserController extends Controller
     }
     public function SearchProduct($search){
         if($search == "AllProductSearch") $products = Product::paginate(9);
-        else $products = Product::where('name', 'like', "%$search%")->paginate(9);
+        else $products = Product::where('name', 'like', "%$search%")->get();
+        return view("user.search", compact('products'));
+    }
+    public function FilterProduct($search){
+        if($search == "All") $products = Product::paginate(9);
+        else $products = Product::where('category_id',$search)->get();
         return view("user.search", compact('products'));
     }
 }

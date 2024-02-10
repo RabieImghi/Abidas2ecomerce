@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Permission;
+use App\Models\Route;
 use App\Console\Commands\AddPermission;
 class HasPermission
 {
@@ -18,7 +19,11 @@ class HasPermission
     {
         $permission =  new AddPermission();
         $permission->handle();
-        $publicRoutes = ['/', 'Home','login','Register','ForgetPassword','User/Register','User/Login','logout'];
+        $publics = Permission::where('role_id',3)->with('route')->get();
+        $publicRoutes =[];
+        foreach($publics as $publicRoute){
+            $publicRoutes[]= $publicRoute->route->name;
+        }
         $uri = $request->route()->uri;
         $role_id = session('user_role') ?? '';
         if ($role_id) {

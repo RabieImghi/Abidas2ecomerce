@@ -41,8 +41,9 @@ class AddPermission extends Command
             $routeModel->save();  
         }
         
-        if(Role::count()==0){
+        if(Role::count()==2){
             Role::create(["name"=>"Admin"]);
+            Role::create(["name"=>"User"]);
             Role::create(["name"=>"Guest"]);
         }
         // $modelRoutes = RouteModel::all();

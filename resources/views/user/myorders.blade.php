@@ -7,7 +7,7 @@
             Not Order Yet !!!
         </div>
         @else
-        <form action="/Payment" method="POST">
+        
             <table class="table align-middle mb-0 bg-white">
                 <thead class="bg-light">
                 <tr>
@@ -20,12 +20,16 @@
                 </tr>
                 </thead>
                 <tbody>
+                    <form action="/Payment" method="POST">
+                        @csrf
                     @php
                     $total = 0;
                     @endphp
                     @foreach($sales as $sale)
                     @php
+                    if($sale->status != "completed")
                     $total += $sale->quantite * $sale->price;
+                    
                     @endphp
                     <tr>
                         <td>
@@ -37,7 +41,11 @@
                             </div>
                         </td>
                         <td>
+                            @if($sale->status == 'pending')
                             <p class="fw-normal mb-1 text-warning">{{$sale->status}} </p>
+                            @else
+                            <p class="fw-normal mb-1 text-success">{{$sale->status}} </p>
+                            @endif
                         </td>
                         <td>
                             <p class="fw-normal mb-1">$ {{$sale->price}} </p>
@@ -56,14 +64,17 @@
                     <td  class="fw-normal mb-1 fw-bold">$ {{ $total}}</td>
                     <input type="hidden" name="totlaPayment" value="{{$total}}">
                     <td>
+                        @if($total != 0)
                         <button type="submit" class="btn btn-primary">
                             Paiement
                         </button>
+                        @endif
                     </td>
                 </tr>
                 </tbody>
+                </form>
             </table>
-        </form>
+        
         @endif
     </div>
     <div class="pt-4 mt-2">

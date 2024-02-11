@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="nk-tb-col">
-                    <span class="tb-lead"><a href="#">#{{$sale->id}}</a></span>
+                    <span class="tb-lead"><a href="#">#{{$sale->product->name}}</a></span>
                 </div>
                 <div class="nk-tb-col tb-col-md">
                     <span class="tb-sub">{{$sale->created_at}}</span>

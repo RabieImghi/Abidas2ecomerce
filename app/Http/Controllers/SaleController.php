@@ -28,4 +28,11 @@ class SaleController extends Controller
         $sale->save();
         return redirect($request->previous_url);
     }
+    public function orderdsUser($id){
+        $sales = Sale::with('user')->with('product')->where('status','pending')->where('user_id',$id)->get();
+        return view('user.myorders',compact('sales'));
+    }
+    public function Payment(Request $request){
+
+    }
 }

@@ -67,7 +67,34 @@
                     <p class="card-text" style="height: 76px; overflow: hidden">{{$product->description}}</p>
                     <div class="prixinfo d-flex gap-5">
                         <button class="btn btn-danger">$ {{$product->price}}</button>
-                        <button class="btn btn-primary">Order Now</button>  
+                        @if(session()->has('user_id'))
+                        <button data-bs-toggle="modal" data-bs-target="#order{{$product->id}}" class="btn btn-primary">Order Now</button>  
+                        @else
+                        <a href="/login" class="btn btn-primary">Order Now</a>  
+                        @endif
+                    </div>
+                    <div class="modal fade" id="order{{$product->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <form action="/OrderProduct" method="POST">
+                                @csrf
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Product : {{$product->name}}</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                        <div class="modal-body">
+                                            <input type="number" required min="1" name="quantite" class="form-control" placeholder="Quantite">
+                                            <input type="hidden" name="product_id" class="form-control" value="{{$product->id}}">
+                                            <input type="hidden" name="price" class="form-control" value="{{$product->price}}">
+                                            <input type="hidden" name="previous_url" value="{{ url()->previous() }}">
+                                        </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Make Your Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

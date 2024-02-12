@@ -57,21 +57,6 @@
                 <div class="nk-tb-col tb-col-md"><span>Price</span></div>
                 <div class="nk-tb-col tb-col-md"><span>Quantity</span></div>
                 <div class="nk-tb-col"><span>Total</span></div>
-                <div class="nk-tb-col nk-tb-col-tools">
-                    <ul class="nk-tb-actions gx-1 my-n1">
-                        <li>
-                            <div class="drodown">
-                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <ul class="link-list-opt no-bdr">
-                                        <li><a href="#"><em class="icon ni ni-edit"></em><span>Update Status</span></a></li>
-                                        <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Orders</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </div><!-- .nk-tb-item -->
             @foreach($sales as $sale)
             <div class="nk-tb-item">
@@ -89,7 +74,11 @@
                 </div>
                 <div class="nk-tb-col">
                     <span class="dot bg-warning d-sm-none"></span>
+                    @if($sale->status == 'pending')
                     <span class="badge badge-sm badge-dot has-bg bg-warning d-none d-sm-inline-flex">{{$sale->status}}</span>
+                    @else
+                    <span class="badge badge-sm badge-dot has-bg bg-success d-none d-sm-inline-flex">{{$sale->status}}</span>
+                    @endif
                 </div>
                 <div class="nk-tb-col tb-col-sm">
                     <span class="tb-sub">{{$sale->user->name}}</span>
@@ -102,26 +91,6 @@
                 </div>
                 <div class="nk-tb-col">
                     <span class="tb-lead">$ {{$sale->quantite * $sale->price}}</span>
-                </div>
-                <div class="nk-tb-col nk-tb-col-tools">
-                    <ul class="nk-tb-actions gx-1">
-                        <li class="nk-tb-action-hidden"><a href="#" class="btn btn-icon btn-trigger btn-tooltip" aria-label="Mark as Delivered" data-bs-original-title="Mark as Delivered">
-                                <em class="icon ni ni-truck"></em></a></li>
-                        <li class="nk-tb-action-hidden"><a href="#" class="btn btn-icon btn-trigger btn-tooltip" aria-label="View Order" data-bs-original-title="View Order">
-                                <em class="icon ni ni-eye"></em></a></li>
-                        <li>
-                            <div class="drodown me-n1">
-                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <ul class="link-list-opt no-bdr">
-                                        <li><a href="#"><em class="icon ni ni-truck"></em><span>Pending</span></a></li>
-                                        <li><a href="#"><em class="icon ni ni-money"></em><span>Completed</span></a></li>
-                                        <li><a href="#"><em class="icon ni ni-trash"></em><span>Canceled</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </div>
             @endforeach

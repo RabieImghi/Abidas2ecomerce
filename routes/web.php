@@ -58,5 +58,6 @@ Route::get('/SearchProductPrice/{search}', [UserController::class, 'SearchProduc
 Route::get('/orderds/{id}', [SaleController::class, 'orderdsUser']);
 Route::post('/OrderProduct', [SaleController::class, 'OrderProduct']);
 Route::post('/Payment', [SaleController::class, 'Payment']);
+Route::post('/hhhhh', [SaleController::class, 'Payment']);
 
 

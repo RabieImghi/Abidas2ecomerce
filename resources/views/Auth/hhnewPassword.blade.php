@@ -9,7 +9,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="./images/favicon.png">
     <!-- Page Title  -->
-    <title>Reset | DashLite Admin Template</title>
+    <title>Login | DashLite Admin Template</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=3.1.2">
     <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=3.1.2">
@@ -34,29 +34,31 @@
                             <div class="card-inner card-inner-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h5 class="nk-block-title">Reset password</h5>
+                                        <h4 class="nk-block-title">Sign-In</h4>
                                         <div class="nk-block-des">
-                                            <p>If you forgot your password, well, then we’ll email you instructions to reset your password.</p>
+                                            <p>Access the Dashlite panel using your email and passcode.</p>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="/sendMail" method="post">
+                                <form action="AddNewPassword" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <div class="form-label-group">
-                                            <label class="form-label" for="default-01">Email</label>
+                                            <label class="form-label" for="password">Passcode</label>
                                         </div>
                                         <div class="form-control-wrap">
-                                            <input type="email" name="email" class="form-control form-control-lg" id="default-01" placeholder="Enter your email address">
+                                            <a href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
+                                                <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                                                <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+                                            </a>
+                                            <input type="password" name="password" class="form-control form-control-lg" id="password" placeholder="Enter your passcode">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Send Reset Link</button>
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block">Reset Password</button>
                                     </div>
                                 </form>
-                                <div class="form-note-s2 text-center pt-4">
-                                    <a href="/login"><strong>Return to login</strong></a>
-                                </div>
+    
                             </div>
                         </div>
                     </div>
@@ -109,7 +111,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; 2022 CryptoLite. All Rights Reserved.</p>
+                                        <p class="text-soft">&copy; 2022 Dashlite. All Rights Reserved.</p>
                                     </div>
                                 </div>
                             </div>

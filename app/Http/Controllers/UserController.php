@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
@@ -36,5 +37,21 @@ class UserController extends Controller
         $price = explode('-',$search);
         $products = Product::where('price', '>', $price[0]) ->where('price', '<', $price[1]) ->get();
         return view("user.search", compact('products'));
+    }
+    public function resete_password($token){
+        $token1 =  session('token_reset');
+        if($token == $token1){
+            return view('Auth.resetPass');
+        }
+    }
+    public function restMyPassword(Request $request){
+        $validatData = $request->validate([
+            'password'=>'required',
+        ]);
+        $password = Hash::make($validatData['password']);
+        User::where('email',session('email_reset'))->update([
+            'password'=>$password,
+        ]);
+        return view("Auth.login");
     }
 }

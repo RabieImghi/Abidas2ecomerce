@@ -8,6 +8,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PermissionController;
 
 /*
@@ -58,6 +59,10 @@ Route::get('/SearchProductPrice/{search}', [UserController::class, 'SearchProduc
 Route::get('/orderds/{id}', [SaleController::class, 'orderdsUser']);
 Route::post('/OrderProduct', [SaleController::class, 'OrderProduct']);
 Route::post('/Payment', [SaleController::class, 'Payment']);
-Route::post('/hhhhh', [SaleController::class, 'Payment']);
+
+
+Route::post('/sendMail', [MailController::class, 'sendMail']);
+Route::post('/restMyPassword', [UserController::class, 'restMyPassword']);
+Route::get('/password/reset/{token}', [UserController::class, 'resete_password'])->name('password/reset/');
 
 
